@@ -1,0 +1,76 @@
+# Morpheus Configuration
+
+# RL Agent Settings
+rl:
+  learning_rate: 0.0003
+  gamma: 0.99
+  epsilon: 0.2
+  epochs: 10
+  state_dim: 200
+  hidden_dim: 256
+
+# GAN Settings
+gan:
+  latent_dim: 100
+  output_dim: 256
+  learning_rate: 0.0001
+  n_critic: 5
+  clip_value: 0.01
+  batch_size: 32
+
+# Classifier Settings
+classifier:
+  rf_estimators: 100
+  rf_max_depth: 20
+  gb_estimators: 100
+  gb_max_depth: 10
+  nn_hidden_layers: [256, 128, 64]
+  test_size: 0.2
+
+# Mutation Settings
+mutation:
+  default_iterations: 100
+  max_section_size: 4096
+  min_section_size: 512
+  max_import_functions: 10
+  min_import_functions: 2
+  
+  # Mutation weights (for random selection)
+  weights:
+    add_section: 1.0
+    add_import: 1.0
+    modify_timestamp: 0.5
+    inject_code_cave: 0.8
+    add_overlay: 0.6
+    modify_entry_point: 0.3
+    encrypt_section: 0.7
+    add_resource: 0.5
+    modify_section_characteristics: 0.4
+    remove_rich_header: 0.2
+    add_tls_callback: 0.3
+    modify_checksum: 0.5
+    add_padding: 0.8
+    obfuscate_strings: 0.7
+    polymorphic_mutation: 0.9
+
+# Evasion Settings
+evasion:
+  anti_av: true
+  anti_sandbox: true
+  anti_debug: true
+  max_entropy_padding: 2048
+  min_entropy_padding: 256
+
+# Paths
+paths:
+  models: "models/pretrained"
+  checkpoints: "models/checkpoints"
+  data: "data"
+  results: "results"
+  logs: "logs"
+
+# Logging
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/morpheus.log"
